@@ -10,6 +10,9 @@ import trs.actors
 
 
 class TestRobot(unittest.TestCase):
+    """
+    A TestCase for the `Robot` class.
+    """
     _robot = None
     _board_width = 5
     _board_height = 5
@@ -18,6 +21,7 @@ class TestRobot(unittest.TestCase):
         board = trs.actors.Board(self._board_width, self._board_height)
         self._robot = trs.actors.Robot(board)
 
+    # test place
     def test_place_pos_out_of_range(self):
         self.assertFalse(self._robot.place(-1, 0, "NORTH"))
         self.assertFalse(self._robot.place(self._board_width, 0, "NORTH"))
@@ -39,6 +43,7 @@ class TestRobot(unittest.TestCase):
         for f in ("NORTH", "SOUTH", "EAST", "WEST"):
             self.assertTrue(self._robot.place(0, 0, f))
 
+    # test move
     def test_move_invalid(self):
         self._robot.place(0, 0, "NORTH")
 
@@ -56,6 +61,7 @@ class TestRobot(unittest.TestCase):
         self.assertTrue(self._robot.move())
         self.assertTrue(self._robot.move())
 
+    # test move | left | right
     def test_navigate_before_place(self):
         self.assertFalse(self._robot.move())
         self.assertFalse(self._robot.left())
@@ -67,28 +73,31 @@ class TestRobot(unittest.TestCase):
         self.assertTrue(self._robot.left())
         self.assertTrue(self._robot.right())
 
+    # test left
     def test_left(self):
         self.assertTrue(self._robot.place(0, 0, "NORTH"))
         self.assertTrue(self._robot.left())
-        self.assertEqual(self._robot.f_direction, "WEST")
+        self.assertEqual(self._robot._f_direction, "WEST")
         self.assertTrue(self._robot.left())
-        self.assertEqual(self._robot.f_direction, "SOUTH")
+        self.assertEqual(self._robot._f_direction, "SOUTH")
         self.assertTrue(self._robot.left())
-        self.assertEqual(self._robot.f_direction, "EAST")
+        self.assertEqual(self._robot._f_direction, "EAST")
         self.assertTrue(self._robot.left())
-        self.assertEqual(self._robot.f_direction, "NORTH")
+        self.assertEqual(self._robot._f_direction, "NORTH")
 
+    # test right
     def test_right(self):
         self.assertTrue(self._robot.place(0, 0, "NORTH"))
         self.assertTrue(self._robot.right())
-        self.assertEqual(self._robot.f_direction, "EAST")
+        self.assertEqual(self._robot._f_direction, "EAST")
         self.assertTrue(self._robot.right())
-        self.assertEqual(self._robot.f_direction, "SOUTH")
+        self.assertEqual(self._robot._f_direction, "SOUTH")
         self.assertTrue(self._robot.right())
-        self.assertEqual(self._robot.f_direction, "WEST")
+        self.assertEqual(self._robot._f_direction, "WEST")
         self.assertTrue(self._robot.right())
-        self.assertEqual(self._robot.f_direction, "NORTH")
+        self.assertEqual(self._robot._f_direction, "NORTH")
 
+    # test report
     def test_report_before_place(self):
         self.assertFalse(self._robot.report())
 

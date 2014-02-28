@@ -67,8 +67,10 @@ class Main(object):
                 cmds_reader = trs.readers.CmdsReaderFIn(robot, file_path_abs)
                 cmds_reader.run()
             else:
+                # invalid parameters
                 self._display_help()
         elif len(sys.argv) > 2:
+            # invalid parameter count
             self._display_help()
 
 

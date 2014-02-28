@@ -11,13 +11,17 @@ import trs.readers
 import unittest
 
 
-class TestReaderFIn(unittest.TestCase):
+class TestCmdsReaderFIn(unittest.TestCase):
+    """
+    A TestCase for the `CmdsReadersFIn` class.
+    """
     _robot = None
 
     def setUp(self):
         board = trs.actors.Board(5, 5)
         self._robot = trs.actors.Robot(board)
 
+    # test run
     def test_run_valid(self):
         file_path_abs = os.path.abspath(os.path.join((__file__),
                                                      "../../",

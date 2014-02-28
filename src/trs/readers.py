@@ -68,6 +68,7 @@ class CmdsReaderSIn(CmdsReader):
         Initializes the standard-input loop and dispatches commands.
         """
         input_str = None
+        # initialize standard-input loop, catching string "exit" to exit.
         while input_str != "exit":
             try:
                 input_str = raw_input("")
@@ -93,8 +94,10 @@ class CmdsReaderFIn(CmdsReader):
         Reads the file from the file path this class has been instantiated with
         line by line and dispatches each line as a command.
         """
+        # check validity of file (path)
         if os.path.isfile(self._file_path_abs):
             with open(self._file_path_abs, "r") as f:
+                # iterate through lines & dispatch each as command
                 for line in f.readlines():
                     if line[-1] == "\n":
                         line = line[:-1]
