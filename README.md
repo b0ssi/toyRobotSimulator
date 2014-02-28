@@ -5,14 +5,14 @@ A simple version of Karel the robot that accepts standard- as well as
 file-input and text-based output.
 
 Author
-######
-Frieder Czeschla
+======
+Frieder Czeschla, 2014-02
+
 www.isotoxin.de
-2014-02
 
 
 License Agreement
-#################
+=================
 
 This software is licensed under the GPL (v3).
 

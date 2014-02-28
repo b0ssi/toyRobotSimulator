@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''
 Created on 28/02/2014
 
@@ -68,7 +69,10 @@ class CmdsReaderSIn(CmdsReader):
         """
         input_str = None
         while input_str != "exit":
-            input_str = input("")
+            try:
+                input_str = raw_input("")
+            except NameError:
+                input_str = input("")
             self._exec_cmd(input_str)
         return True
 

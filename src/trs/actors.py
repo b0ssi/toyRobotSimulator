@@ -1,8 +1,9 @@
-'''
+# -*- coding: utf-8 -*-
+"""
 Created on 28/02/2014
 
 @author: Frieder Czeschla
-'''
+"""
 
 
 class Robot(object):
